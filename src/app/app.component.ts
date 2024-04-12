@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Signal} from '@angular/core';
+import {MessageService} from "./services/message.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'untitled';
+  username: string|undefined
+  currentUser: Signal<string|undefined>
+
+  constructor(
+    private readonly _messageService: MessageService
+  ) {
+    this.currentUser = _messageService.currentUser;
+  }
+
+  setCurrentUser(){
+    if(this.username){
+      this._messageService.setCurrentUser(this.username);
+    }
+  }
 }

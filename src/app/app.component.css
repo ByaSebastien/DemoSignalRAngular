@@ -1,0 +1,8 @@
+:host{
+  display: flex;
+}
+
+nav{
+  background-color: lightgray;
+  width: 30%;
+}

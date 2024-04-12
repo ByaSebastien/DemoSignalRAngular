@@ -1,0 +1,10 @@
+<form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+  <input type="text" formControlName="username">
+  <input type="text" formControlName="content">
+  <button type="submit">Send</button>
+</form>
+<ul>
+  @for (message of message$(); track message.content){
+    <li>{{message.username}} : {{message.content}}</li>
+  }
+</ul>
