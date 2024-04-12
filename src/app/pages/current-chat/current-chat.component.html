@@ -1,4 +1,5 @@
 @if(currentConversation()){
+  <input type="text" [(ngModel)]="messageInput">
   <button type="button" (click)="sendMessage()">Test</button>
   <ul>
     @for (message of currentConversation()?.messages;track message.content){

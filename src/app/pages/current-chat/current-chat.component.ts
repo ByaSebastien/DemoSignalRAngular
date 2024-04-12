@@ -10,6 +10,8 @@ import {Conversation} from "../../models/conversation";
 export class CurrentChatComponent {
 
   currentConversation: Signal<Conversation|undefined>
+  messageInput: string|undefined
+
   constructor(
     private readonly _messageService: MessageService
   ) {
@@ -17,10 +19,10 @@ export class CurrentChatComponent {
   }
 
   sendMessage(){
-    if(this.currentConversation() && this._messageService.currentUser){
+    if(this.currentConversation() && this._messageService.currentUser && this.messageInput){
       let conv = this.currentConversation()!
       let currentUser = this._messageService.currentUser()!
-      this._messageService.sendGroupMessage(conv.id,{username:currentUser,content:"test"})
+      this._messageService.sendGroupMessage(conv.id,{username:currentUser,content:this.messageInput})
     }
   }
 }
